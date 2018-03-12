@@ -4,7 +4,7 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.alert.shera.alertdialoglib.AstrikaAlert;
+import com.alert.shera.alertdialoglib.AlertLibrary;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        AstrikaAlert pDialog = new AstrikaAlert(this, AstrikaAlert.PROGRESS_TYPE);
+        AlertLibrary pDialog = new AlertLibrary(this, AlertLibrary.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
         pDialog.setTitleText("Loading");
         pDialog.setCancelable(false);

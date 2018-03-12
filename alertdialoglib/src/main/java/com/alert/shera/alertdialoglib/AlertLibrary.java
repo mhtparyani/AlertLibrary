@@ -20,7 +20,7 @@ import android.widget.TextView;
 import java.util.List;
 
 
-public class AstrikaAlert extends Dialog implements View.OnClickListener {
+public class AlertLibrary extends Dialog implements View.OnClickListener {
 
     private View mDialogView;
     private AnimationSet mModalInAnim;
@@ -65,14 +65,14 @@ public class AstrikaAlert extends Dialog implements View.OnClickListener {
 
 
     public static interface OnAlertClickListener {
-        public void onClick(AstrikaAlert astrikaAlert);
+        public void onClick(AlertLibrary alertLibrary);
     }
 
-    protected AstrikaAlert(@NonNull Context context) {
+    public AlertLibrary(@NonNull Context context) {
         super(context, NORMAL_TYPE);
     }
 
-    public AstrikaAlert(Context context, int alertType) {
+    public AlertLibrary(Context context, int alertType) {
         super(context, R.style.alert_dialog);
         setCancelable(true);
         setCanceledOnTouchOutside(false);
@@ -111,9 +111,9 @@ public class AstrikaAlert extends Dialog implements View.OnClickListener {
                     @Override
                     public void run() {
                         if (mCloseFromCancel) {
-                            AstrikaAlert.super.cancel();
+                            AlertLibrary.super.cancel();
                         } else {
-                            AstrikaAlert.super.dismiss();
+                            AlertLibrary.super.dismiss();
                         }
                     }
                 });
@@ -240,7 +240,7 @@ public class AstrikaAlert extends Dialog implements View.OnClickListener {
         return mTitleText;
     }
 
-    public AstrikaAlert setTitleText (String text) {
+    public AlertLibrary setTitleText (String text) {
         mTitleText = text;
         if (mTitleTextView != null && mTitleText != null) {
             mTitleTextView.setText(mTitleText);
@@ -248,7 +248,7 @@ public class AstrikaAlert extends Dialog implements View.OnClickListener {
         return this;
     }
 
-    public AstrikaAlert setCustomImage (Drawable drawable) {
+    public AlertLibrary setCustomImage (Drawable drawable) {
         mCustomImgDrawable = drawable;
         if (mCustomImage != null && mCustomImgDrawable != null) {
             mCustomImage.setVisibility(View.VISIBLE);
@@ -257,7 +257,7 @@ public class AstrikaAlert extends Dialog implements View.OnClickListener {
         return this;
     }
 
-    public AstrikaAlert setCustomImage (int resourceId) {
+    public AlertLibrary setCustomImage (int resourceId) {
         return setCustomImage(getContext().getResources().getDrawable(resourceId));
     }
 
@@ -265,7 +265,7 @@ public class AstrikaAlert extends Dialog implements View.OnClickListener {
         return mContentText;
     }
 
-    public AstrikaAlert setContentText (String text) {
+    public AlertLibrary setContentText (String text) {
         mContentText = text;
         if (mContentTextView != null && mContentText != null) {
             showContentText(true);
@@ -278,7 +278,7 @@ public class AstrikaAlert extends Dialog implements View.OnClickListener {
         return mShowCancel;
     }
 
-    public AstrikaAlert showCancelButton (boolean isShow) {
+    public AlertLibrary showCancelButton (boolean isShow) {
         mShowCancel = isShow;
         if (mCancelButton != null) {
             mCancelButton.setVisibility(mShowCancel ? View.VISIBLE : View.GONE);
@@ -290,7 +290,7 @@ public class AstrikaAlert extends Dialog implements View.OnClickListener {
         return mShowContent;
     }
 
-    public AstrikaAlert showContentText (boolean isShow) {
+    public AlertLibrary showContentText (boolean isShow) {
         mShowContent = isShow;
         if (mContentTextView != null) {
             mContentTextView.setVisibility(mShowContent ? View.VISIBLE : View.GONE);
@@ -302,7 +302,7 @@ public class AstrikaAlert extends Dialog implements View.OnClickListener {
         return mCancelText;
     }
 
-    public AstrikaAlert setCancelText (String text) {
+    public AlertLibrary setCancelText (String text) {
         mCancelText = text;
         if (mCancelButton != null && mCancelText != null) {
             showCancelButton(true);
@@ -315,7 +315,7 @@ public class AstrikaAlert extends Dialog implements View.OnClickListener {
         return mConfirmText;
     }
 
-    public AstrikaAlert setConfirmText (String text) {
+    public AlertLibrary setConfirmText (String text) {
         mConfirmText = text;
         if (mConfirmButton != null && mConfirmText != null) {
             mConfirmButton.setText(mConfirmText);
@@ -323,12 +323,12 @@ public class AstrikaAlert extends Dialog implements View.OnClickListener {
         return this;
     }
 
-    public AstrikaAlert setCancelClickListener (OnAlertClickListener listener) {
+    public AlertLibrary setCancelClickListener (OnAlertClickListener listener) {
         mCancelClickListener = listener;
         return this;
     }
 
-    public AstrikaAlert setConfirmClickListener (OnAlertClickListener listener) {
+    public AlertLibrary setConfirmClickListener (OnAlertClickListener listener) {
         mConfirmClickListener = listener;
         return this;
     }
@@ -363,13 +363,13 @@ public class AstrikaAlert extends Dialog implements View.OnClickListener {
     public void onClick(View v) {
         if (v.getId() == R.id.cancel_button) {
             if (mCancelClickListener != null) {
-                mCancelClickListener.onClick(AstrikaAlert.this);
+                mCancelClickListener.onClick(AlertLibrary.this);
             } else {
                 dismissWithAnimation();
             }
         } else if (v.getId() == R.id.confirm_button) {
             if (mConfirmClickListener != null) {
-                mConfirmClickListener.onClick(AstrikaAlert.this);
+                mConfirmClickListener.onClick(AlertLibrary.this);
             } else {
                 dismissWithAnimation();
             }
