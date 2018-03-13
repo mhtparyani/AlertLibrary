@@ -13,10 +13,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        AlertLibrary pDialog = new AlertLibrary(this, AlertLibrary.PROGRESS_TYPE);
-        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-        pDialog.setTitleText("Loading");
-        pDialog.setCancelable(false);
+        AlertLibrary pDialog = new AlertLibrary(this);
+        pDialog.changeAlertType(AlertLibrary.PROGRESS_TYPE);
+        pDialog.setTitleText("Initializing morpho device...");
         pDialog.show();
     }
 }

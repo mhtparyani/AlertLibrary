@@ -69,7 +69,7 @@ public class AlertLibrary extends Dialog implements View.OnClickListener {
     }
 
     public AlertLibrary(@NonNull Context context) {
-        super(context, NORMAL_TYPE);
+        this(context, NORMAL_TYPE);
     }
 
     public AlertLibrary(Context context, int alertType) {
